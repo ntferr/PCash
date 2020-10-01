@@ -7,7 +7,7 @@ class Debts(db.Model):
     due_date = db.column(db.DateTime)
     document_date = db.column(db.DateTime)
 
-    spending = db.relantionship('Spending', backref = 'debts', lazy = True)
+    spending_id = db.Column(db.Integer, db.ForeignKey('spending.debts'), nullable = False)    
 
     def __init__(self, debts):
         self.value = debts['value']

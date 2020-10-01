@@ -6,6 +6,7 @@ class CreditCardDebts(db.Model):
     bank = db.column(db.String(100))
     description = db.column(db.String(180))
 
+    spending_id = db.relationship(db.Integer, db.ForeignKey('speding.credit_card'), nullable = False)
     spending = db.relationship('Spending', backref = 'credit_card_debts', lazy = True)
     
     def __init__(self, credit_card_debts):
