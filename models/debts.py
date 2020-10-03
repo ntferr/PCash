@@ -1,11 +1,11 @@
 from app import db
 
 class Debts(db.Model):
-    id = db.column(db.Integer, primary_key = True, autoincrement = True)
-    value = db.column(db.Float)
-    description = db.column(db.String(180))
-    due_date = db.column(db.DateTime)
-    document_date = db.column(db.DateTime)
+    id = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    value = db.Column(db.Float)
+    description = db.Column(db.String(180))
+    due_date = db.Column(db.DateTime)
+    document_date = db.Column(db.DateTime)
 
     spending_id = db.Column(db.Integer, db.ForeignKey('spending.debts'), nullable = False)    
 
@@ -14,3 +14,5 @@ class Debts(db.Model):
         self.description = debts['description']
         self.due_date = debts['due_date']
         self.document_date = debts['document_date']
+
+        self.spending_id = debts['spending_id']
