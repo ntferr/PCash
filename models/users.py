@@ -9,6 +9,8 @@ class Users(db.Model):
     email =  db.Column(db.String(225), unique = True)
     date_of_birth = db.Column(db.DateTime)
 
+    spendings = db.relationship('Spendings', backref='spendings', lazy=True)
+
     def __init__(self, user):
         self.cpf = user['cpf']
         self.name = user['name']
